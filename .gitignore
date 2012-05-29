@@ -2,3 +2,5 @@
 .bundle
 Gemfile.lock
 pkg/*
+src/snappy
+src/*.o
