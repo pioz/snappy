@@ -1,4 +1,5 @@
 #!/usr/bin/env macruby
 require 'snappy'
 
-Snappy.alloc.init.snap
+Snappy.print_devices_list
+#s = Snappy.alloc.init
