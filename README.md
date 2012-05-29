@@ -11,10 +11,10 @@ Takes a snapshot with your Mac's built-in iSight/FaceTime webcam by command line
 
     git clone git@github.com:pioz/snappy.git 
     cd snappy/
-    rake compile
+    rake
     rake install
 
-Alternatively you can [download the executable]().
+Alternatively you can [download the executable](https://github.com/pioz/snappy/raw/master/snappy.zip).
     
 ## Usage
 
