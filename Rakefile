@@ -34,6 +34,11 @@ task :uninstall do
   end
 end
 
+desc 'Create a zip file of Snappy'
+task :release do
+  system 'zip snappy.zip src/snappy'
+end
+
 desc 'Clean'
 task :clean do
   `rm src/*.o src/snappy`
