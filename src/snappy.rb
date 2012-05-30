@@ -3,8 +3,15 @@ framework 'qtkit'
 
 class Snappy
 
+  def init(options = {})
+    @device   = Snappy.get_device_by_name(options[:d])
+    @device ||= QTCaptureDevice.defaultInputDeviceWithMediaType(QTMediaTypeVideo)
+    @wait = options[:w].to_i
+    @filename = options[:filename] || 'snapshot.jpg'
+    self
+  end
+
   def snap
-    @device = QTCaptureDevice.defaultInputDeviceWithMediaType(QTMediaTypeVideo)
     unless @device
       $stderr.puts 'No device found.'
       return
@@ -13,29 +20,27 @@ class Snappy
       $stderr.puts 'Device is in use by another application.'
       return
     end
+    sleep @wait
     if (open_camera)
       until @captured_frame
         NSRunLoop.currentRunLoop.runUntilDate(NSDate.dateWithTimeIntervalSinceNow(0.01))
       end
       close_camera
       image = frame_to_image (@captured_frame)
-      save_image (image, "/Users/pioz/Desktop/snap.jpg")
+      save_image (image, @filename)
     end
   end
 
   def self.devices_list
-    hash = {}
-    devices = QTCaptureDevice.inputDevicesWithMediaType(QTMediaTypeVideo)
-    devices.each_with_index do |device, i|
-      hash[i+1] = device.localizedDisplayName
-    end
-    hash
+    QTCaptureDevice.inputDevicesWithMediaType(QTMediaTypeVideo).map(&:localizedDisplayName)
   end
 
-  def self.print_devices_list
-    devices_list.each do |k, v|
-      puts "#{k}. #{v}"
+  def self.get_device_by_name(name)
+    devices = QTCaptureDevice.inputDevicesWithMediaType(QTMediaTypeVideo)
+    devices.each do |device|
+      return device if device.localizedDisplayName == name
     end
+    return nil
   end
 
   private
