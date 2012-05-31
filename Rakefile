@@ -1,3 +1,4 @@
+require './src/version.rb'
 BIN = 'snappy'
 
 task :default => :compile
@@ -8,7 +9,7 @@ task :compile do
     puts 'You need MacRuby (http://macruby.org) to use Snappy!'
   else
     Dir.chdir('src') do
-      system "macrubyc main.rb snappy.rb -o #{BIN}"
+      system "macrubyc main.rb snappy.rb version.rb -o #{BIN}"
     end
   end
 end
@@ -39,7 +40,7 @@ end
 
 desc 'Create a zip file of Snappy'
 task :release => :compile do
-  system "zip #{BIN}.zip src/#{BIN}"
+  system "zip #{BIN}-#{Snappy::VERSION}.zip src/#{BIN}"
 end
 
 desc 'Clean'

@@ -14,7 +14,7 @@ Takes a snapshot with your Mac's built-in iSight/FaceTime webcam by command line
     rake
     rake install
 
-Alternatively you can [download the executable](https://github.com/pioz/snappy/raw/master/snappy.zip).
+Alternatively you can [download the executable](https://github.com/pioz/snappy/raw/master/snappy-0.0.2.zip).
     
 ## Usage
 
