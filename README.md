@@ -16,7 +16,7 @@ Snappy is also able to print a message on the snapshot!
     rake
     rake install
 
-Alternatively you can [download the executable](https://github.com/pioz/snappy/raw/master/snappy-0.0.2.zip).
+Alternatively you can [download the executable](https://github.com/pioz/snappy/raw/master/snappy-0.0.3.zip).
     
 ## Usage
 
