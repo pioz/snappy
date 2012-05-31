@@ -8,8 +8,9 @@ task :compile do
   if (`which macruby`.empty?)
     puts 'You need MacRuby (http://macruby.org) to use Snappy!'
   else
+    SOURCES = %w(main.rb snappy.rb image_texter.rb version.rb)
     Dir.chdir('src') do
-      system "macrubyc main.rb snappy.rb version.rb -o #{BIN}"
+      system "macrubyc #{SOURCES.join(' ')} -o #{BIN}"
     end
   end
 end

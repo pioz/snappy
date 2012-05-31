@@ -1,6 +1,8 @@
 framework 'cocoa'
 framework 'qtkit'
 
+require 'image_texter'
+
 class Snappy
 
   def init(options = {})
@@ -8,6 +10,8 @@ class Snappy
     @device ||= QTCaptureDevice.defaultInputDeviceWithMediaType(QTMediaTypeVideo)
     @wait = options[:w].to_i
     @filename = options[:filename] || 'snapshot.jpg'
+    @title = options[:t]
+    @message = options[:m]
     self
   end
 
@@ -27,6 +31,11 @@ class Snappy
       end
       close_camera
       image = frame_to_image (@captured_frame)
+      if @title || @message
+        texter = ImageTexter.alloc.init(image)
+        texter.add_title(@title) if @title
+        texter.add_message(@message) if @message
+      end
       save_image (image, @filename)
     end
   end

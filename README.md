@@ -2,6 +2,8 @@
 
 Takes a snapshot with your Mac's built-in iSight/FaceTime webcam by command line.
 
+Snappy is also able to print a message on the snapshot!
+
 ## Requirements
 
 * MacOSX 10.6 or higher
@@ -19,6 +21,12 @@ Alternatively you can [download the executable](https://github.com/pioz/snappy/r
 ## Usage
 
     snappy path/to/save/file.jpg
+    
+To print a message on the snapshot use:
+
+    snappy -m "I'm Pioz" path/to/save/file.jpg
+
+Use `-m` to print a bottom left big message, use `-t` to print a top right title.
 
 See `snappy -h` to get more help.
     
