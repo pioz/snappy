@@ -82,13 +82,15 @@ class Snappy
   end
 
   def frame_to_image(frame)
-    imageRep = NSCIImageRep.imageRepWithCIImage(CIImage.imageWithCVImageBuffer(frame))
-    image = NSImage.alloc.initWithSize(imageRep.size).addRepresentation(imageRep)
+    rep = NSCIImageRep.imageRepWithCIImage(CIImage.imageWithCVImageBuffer(frame))
+    image = NSImage.alloc.initWithSize(rep.size).addRepresentation(rep)
     return image
   end
 
   def save_image(image, filename)
-    image.TIFFRepresentation.writeToFile(filename, atomically:false)
+    rep = NSBitmapImageRep.alloc.initWithData(image.TIFFRepresentation)
+    data = rep.representationUsingType(NSJPEGFileType, properties:nil)
+    data.writeToFile(filename, atomically:true)
   end
 
   def captureOutput(captureOutput, didOutputVideoFrame:videoFrame, withSampleBuffer:sampleBuffer, fromConnection:connection)

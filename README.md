@@ -16,7 +16,7 @@ Snappy is also able to print a message on the snapshot!
     rake
     rake install
 
-Alternatively you can [download the executable](https://github.com/pioz/snappy/raw/master/snappy-0.0.3.zip).
+Alternatively you can [download the executable](https://github.com/pioz/snappy/raw/master/snappy-0.0.4.zip).
     
 ## Usage
 
@@ -29,7 +29,9 @@ To print a message on the snapshot use:
 Use `-m` to print a bottom left big message, use `-t` to print a top right title.
 
 See `snappy -h` to get more help.
-    
+
+![Have fun with Snappy](http://www.pioz.it/extra/snappy.jpg)
+
 ## Copyright
 
 Copyright (c) 2012 Enrico Pilotto ([@pioz](http://github.com/pioz)). See [LICENSE](https://github.com/pioz/snappy/blob/master/LICENSE) for details.
